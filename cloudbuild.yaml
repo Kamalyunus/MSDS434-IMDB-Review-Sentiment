@@ -5,5 +5,7 @@ steps:
 # Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/trusty-bearing-366601/imdb-training']
+- name: 'bash'
+  args: ['./train.sh']
 images:
 - gcr.io/trusty-bearing-366601/imdb-training
