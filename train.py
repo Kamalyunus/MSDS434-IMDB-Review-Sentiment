@@ -59,9 +59,9 @@ def train():
     model.save_pretrained("./sentiment")
 
     upload_blob('msds434-finalproject',
-                './sentiment/config.json', 'imdb/models/sentiment/config.json')
+                './sentiment/config.json', 'imdb/models/config.json')
     upload_blob('msds434-finalproject',
-                './sentiment/tf_model.h5', 'imdb/models/sentiment/tf_model.h5')
+                './sentiment/tf_model.h5', 'imdb/models/tf_model.h5')
 
 
 def upload_blob(bucket_name, source_file_name, destination_blob_name):
