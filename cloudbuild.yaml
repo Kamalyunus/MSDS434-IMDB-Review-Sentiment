@@ -1,11 +1,9 @@
 steps:
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/trusty-bearing-366601/imdb-training', '.']
+  args: ['build', '-t', 'gcr.io/trusty-bearing-366601/imdb-training', '.','-f','training/Dockerfile']
 # Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/trusty-bearing-366601/imdb-training']
-- name: 'bash'
-  args: ['./train.sh']
 images:
 - gcr.io/trusty-bearing-366601/imdb-training
