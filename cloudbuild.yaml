@@ -15,7 +15,7 @@ steps:
   args: ['push', 'gcr.io/trusty-bearing-366601/movie-sentiment-app']
 # Deploy container image to Cloud Run
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['run', 'deploy', 'movie-sentiment-app', '--image', 'gcr.io/trusty-bearing-366601/movie-sentiment-app', '--region', 'us-central1', '--platform', 'managed', '--memory', '256M', '--allow-unauthenticated', '--max-instances', '5']
+  args: ['run', 'deploy', 'movie-sentiment-app', '--image', 'gcr.io/trusty-bearing-366601/movie-sentiment-app', '--region', 'us-central1', '--platform', 'managed', '--memory', '256M', '--allow-unauthenticated', '--port','8501','--max-instances', '5']
 
 images:
 - gcr.io/trusty-bearing-366601/movie-sentiment-app
