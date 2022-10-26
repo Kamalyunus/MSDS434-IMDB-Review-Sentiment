@@ -4,6 +4,14 @@ import json
 
 predictionEndpoint = 'https://sentiment-nnlg3yqwxa-ue.a.run.app/sentiment'
 
+st.set_page_config(
+    page_title="IMDB Sentiment",
+    page_icon="random",
+    menu_items={
+        'About': "# MSDS 434 Final Project: *IMDB Sentiment Analysis*"
+    }
+)
+
 @st.cache(suppress_st_warning=True)
 def getPrediction(text):
     data = {'text': text}
