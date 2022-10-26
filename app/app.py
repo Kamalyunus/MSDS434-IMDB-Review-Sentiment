@@ -20,12 +20,10 @@ text_input = st.text_area('Please Enter a Movie Review:')
 st.write("The first request might take a while (GCP cloud run service scales to zero to save cost).")
 
 if st.button("Predict"):
-    with st.spinner(text="Please wait..."):
-        responseTime, response = getPrediction(text_input)
-        prediction = json.loads(response.text)
+    responseTime, response = getPrediction(text_input)
+    prediction = json.loads(response.text)
 
-        st.write("Response Time (in ms): ",responseTime)
-        st.write("Movie Review Model Prediction:", prediction["sentiment"].upper())
+    st.write("Response Time (in ms): ",responseTime)
+    st.write("Movie Review Model Prediction:", prediction["sentiment"].upper())
         
-        st.bar_chart({"Model Prediction":prediction["confidence"]})
-    st.success('Done!')
+    st.bar_chart({"Model Prediction":prediction["confidence"]})
