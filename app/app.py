@@ -1,13 +1,18 @@
 import streamlit as st
 import pandas as pd
 
+import predict_text_classification_single_label_sample as p
+
+#mycredentials = google.auth.default()
+#aiplatform.init(credentials=mycredentials)
+
 st.set_page_config(
     page_title="IMDB Sentiment",
     page_icon="random",
     menu_items={
         'About': "# MSDS 434 Final Project: *IMDB Sentiment Analysis*"
     }
-    )
+)
 
 st.title('IMDB Reviews: Sentiment Analysis')
 st.write('The model is trained on 50,000 movie reviews. It takes the movie review entered by user below and classify it as positive or negative review.')
@@ -18,6 +23,14 @@ st.write("The first request might take a while (GCP cloud run service scales to 
 
 if st.button("Predict"):
     with st.spinner('Please wait...'):
-        st.write("Movie Review Model Prediction: POSITIVE")
-        prediction=pd.DataFrame({'displayNames': ['positive', 'negative'], 'confidences': [0.99,0.01]})    
-        st.bar_chart(data=prediction, x='displayNames', y='confidences')
+        prediction=pd.DataFrame(
+            p.predict_text_classification_single_label_sample(
+            project="609731156916",
+            endpoint_id="6424741110211411968",
+            location="us-central1",
+            content=text_input
+            )
+        )
+        st.write("Movie Review Model Prediction:", prediction["displayNames"][prediction.confidences.idxmax()].upper())
+            
+        st.bar_chart(data=pd.DataFrame(prediction), x='displayNames', y='confidences')

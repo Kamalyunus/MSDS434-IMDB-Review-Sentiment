@@ -1,7 +1,7 @@
 steps:
 # Build the container image for imdb review app
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/trusty-bearing-366601/movie-sentiment-app', '.']
+  args: ['build', '-t', 'gcr.io/trusty-bearing-366601/movie-sentiment-app', '.', '-f','app/Dockerfile']
 # Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/trusty-bearing-366601/movie-sentiment-app']
