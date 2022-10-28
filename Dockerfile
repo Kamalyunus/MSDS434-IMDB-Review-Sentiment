@@ -6,4 +6,4 @@ WORKDIR /app
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["streamlit", "run", "app.py", "--server.enableWebsocketCompression=false","--server.port=8080", "--server.address=0.0.0.0"]
+ENTRYPOINT ["streamlit", "run", "app.py","--server.enableCORS=false", "--server.enableWebsocketCompression=false","--server.port=8080", "--server.address=0.0.0.0"]
