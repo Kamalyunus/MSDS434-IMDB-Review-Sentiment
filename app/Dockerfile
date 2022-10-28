@@ -4,6 +4,6 @@ WORKDIR /app
 EXPOSE 8501
 
 COPY app/app.py ./app.py
-RUN pip3 install streamlit
+RUN pip3 install streamlit 
 
 ENTRYPOINT ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
