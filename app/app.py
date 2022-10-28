@@ -27,7 +27,7 @@ if st.button("Predict"):
         prediction=pa.DataFrame(
             pd.predict_text_classification_single_label_sample(
             project="609731156916",
-            endpoint_id="4506207668951580672",
+            endpoint_id="6424741110211411968",
             location="us-central1",
             content=text_input
             )
