@@ -34,4 +34,5 @@ def predict_text_classification_single_label_sample(
     predictions = response.predictions
     for prediction in predictions:
         print(" prediction:", dict(prediction))
+    return dict(prediction)
 
