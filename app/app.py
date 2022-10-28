@@ -2,6 +2,8 @@ import streamlit as st
 import requests
 import json
 
+import predict_text_classification_single_label_sample as pd
+
 predictionEndpoint = 'https://sentiment-nnlg3yqwxa-ue.a.run.app/sentiment'
 
 st.set_page_config(
@@ -29,9 +31,17 @@ st.write("The first request might take a while (GCP cloud run service scales to 
 
 if st.button("Predict"):
     responseTime, response = getPrediction(text_input)
-    prediction = json.loads(response.text)
+    #prediction = json.loads(response.text)
+
+    prediction=pd.predict_text_classification_single_label_sample(
+        project="609731156916",
+        endpoint_id="4506207668951580672",
+        location="us-central1",
+        content=text_input
+    )
 
     st.write("Response Time (in ms): ",responseTime)
-    st.write("Movie Review Model Prediction:", prediction["sentiment"].upper())
+    #st.write("Movie Review Model Prediction:", prediction["sentiment"].upper())
+    st.write("Movie Review Model Prediction:", prediction)
         
-    st.bar_chart({"Model Prediction":prediction["confidence"]})
+    st.bar_chart({"Model Prediction":prediction})
