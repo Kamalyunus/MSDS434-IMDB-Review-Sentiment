@@ -1,4 +1,2 @@
 streamlit 
-google-cloud-aiplatform 
-google-cloud 
 pandas

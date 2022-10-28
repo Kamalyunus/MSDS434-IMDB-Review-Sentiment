@@ -1,12 +1,7 @@
 import streamlit as st
-import pandas as pa
-#from google.cloud import aiplatform
-#import google.auth
-import predict_text_classification_single_label_sample as pd
+import pandas as pd
 
-#mycredentials = google.auth.default()
-#aiplatform.init(credentials=mycredentials)
-
+@st.cache(suppress_st_warning=True)
 def run():
     st.set_page_config(
         page_title="IMDB Sentiment",
@@ -25,17 +20,6 @@ def run():
 
     if st.button("Predict"):
         with st.spinner('Please wait...'):
-            prediction=pa.DataFrame(
-                pd.predict_text_classification_single_label_sample(
-                project="609731156916",
-                endpoint_id="6424741110211411968",
-                location="us-central1",
-                content=text_input
-                )
-            )
-            st.write("Movie Review Model Prediction:", prediction["displayNames"][prediction.confidences.idxmax()].upper())
-                
-            st.bar_chart(data=pa.DataFrame(prediction), x='displayNames', y='confidences')
-
-if __name__ == '__main__':
-    run()   
+            st.write("Movie Review Model Prediction: POSITIVE")
+            prediction=pd.DataFrame({'displayNames': ['positive', 'negative'], 'confidences': [0.99,0.01]})    
+            st.bar_chart(data=prediction, x='displayNames', y='confidences')
