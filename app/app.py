@@ -1,11 +1,11 @@
 import streamlit as st
 import pandas as pa
-from google.cloud import aiplatform
-import google.auth
+#from google.cloud import aiplatform
+#import google.auth
 import predict_text_classification_single_label_sample as pd
 
-mycredentials = google.auth.default()
-aiplatform.init(credentials=mycredentials)
+#mycredentials = google.auth.default()
+#aiplatform.init(credentials=mycredentials)
 
 st.set_page_config(
     page_title="IMDB Sentiment",
