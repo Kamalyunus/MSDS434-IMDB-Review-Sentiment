@@ -34,4 +34,4 @@ if st.button("Predict"):
         )
         st.write("Movie Review Model Prediction:", prediction["displayNames"][prediction.confidences.idxmax()].upper())
             
-        st.bar_chart(data=pd.DataFrame(prediction), x='displayNames', y='confidences')
+        st.bar_chart(data=prediction, x='displayNames', y='confidences')
