@@ -1,10 +1,11 @@
 import streamlit as st
 import pandas as pd
-
+import google.auth
+from google.cloud import aiplatform
 import predict_text_classification_single_label_sample as p
 
-#mycredentials = google.auth.default()
-#aiplatform.init(credentials=mycredentials)
+mycredentials, project_id = google.auth.default()
+aiplatform.init(credentials=mycredentials, project=project_id)
 
 st.set_page_config(
     page_title="IMDB Sentiment",
@@ -26,7 +27,7 @@ if st.button("Predict"):
         prediction=pd.DataFrame(
             p.predict_text_classification_single_label_sample(
             project="609731156916",
-            endpoint_id="6424741110211411968",
+            endpoint_id="1676821203056066560",
             location="us-central1",
             content=text_input
             )
