@@ -51,8 +51,6 @@ def bert_model(train_dataset,val_dataset,epochs):
     print('model fitting...')
     model.fit(train_dataset.batch(32),batch_size = 32,
                 validation_data = val_dataset.batch(32),epochs = epochs)
-    print("Train score:", model.evaluate(train_dataset.batch(32)))
-    print("Validation score:", model.evaluate(val_dataset.batch(32)))
     
     return model
 
