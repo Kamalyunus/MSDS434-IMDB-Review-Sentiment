@@ -7,6 +7,8 @@ import predict_text_classification_single_label_sample as p
 mycredentials, project_id = google.auth.default()
 aiplatform.init(credentials=mycredentials, project=project_id)
 
+endpoint = aiplatform.Endpoint.list()[0].name
+
 st.set_page_config(
     page_title="IMDB Sentiment",
     page_icon="random",
@@ -27,7 +29,7 @@ if st.button("Predict"):
         prediction=pd.DataFrame(
             p.predict_text_classification_single_label_sample(
             project="609731156916",
-            endpoint_id="8289196171570708480",
+            endpoint_id=endpoint,
             location="us-central1",
             content=text_input
             )
