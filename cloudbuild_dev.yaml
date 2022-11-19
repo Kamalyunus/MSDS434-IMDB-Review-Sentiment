@@ -1,0 +1,13 @@
+steps:
+# Build the container image for imdb review app
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/trusty-bearing-366601/movie-sentiment-app-dev', '.', '-f','app/Dockerfile']
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/trusty-bearing-366601/movie-sentiment-app-dev']
+# Deploy container image to Cloud Run
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['run', 'deploy', 'movie-sentiment-app-dev', '--image', 'gcr.io/trusty-bearing-366601/movie-sentiment-app-dev', '--region', 'us-central1', '--platform', 'managed', '--cpu', '1','--memory', '512M', '--allow-unauthenticated', '--port','8501','--max-instances', '5','--service-account','609731156916-compute@developer.gserviceaccount.com']
+
+images:
+- gcr.io/trusty-bearing-366601/movie-sentiment-app-dev
