@@ -18,12 +18,12 @@ This application was built for final project requirement for MSDS 434 course.
 ## Deployment Requirements
 There are 2 requirements to deploy this repository:
 * The model endpoint should already be deployed on vertex ai
-    * Change following lines accordingly in app.py \
+    * Change following lines accordingly in app.py and link project, endpoint_id and location where model is deployed  \
                     ```
                     prediction=pd.DataFrame(p.predict_text_classification_single_label_sample(
-                        project="609731156916",
-                        endpoint_id=endpoint,
-                        location="us-central1",
+                        project={Project_ID},
+                        endpoint_id={Endpoint_ID},
+                        location={Location_ID},
                         content=text_input
                     )
                     ```
